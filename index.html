@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="navbar">
+      <div class="nav-inner container">
+        <div class="nav-logo">Resume Generator</div>
+        <nav class="nav-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#support">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero section -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h1 class="hero-title">Create a job-ready resume in minutes.</h1>
+            <p class="hero-subtitle">
+              Fill in your details, pay a one-time fee of <strong>4.99&nbsp;€</strong>,
+              and download a clean, professional PDF resume. No account, no subscription, just one finished CV.
+            </p>
+            <div class="hero-actions">
+              <button
+                type="button"
+                class="btn btn-primary hero-cta"
+                onclick="document.getElementById('builder').scrollIntoView({ behavior: 'smooth' });"
+              >
+                Start building your resume
+              </button>
+              <span class="hero-note">Payment securely processed by Stripe.</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <h2 class="hero-card-title">What you get</h2>
+            <ul class="hero-list">
+              <li>Clean, minimalist PDF layout that fits on one page</li>
+              <li>Sections for Contact, About Me, Expertise, Hobbies &amp; Education</li>
+              <li>One-time payment only – use the generator as many times as you want</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Builder section -->
+      <section id="builder" class="builder-section">
+        <div class="container">
+          <div class="header">
+            <h1 class="title">Resume Builder</h1>
+            <p class="subtitle">Fill in your details below to generate your resume.</p>
+          </div>
+
+          <div class="form-container">
+            <form id="resumeForm">
+              <div class="form-sections">
+                <div class="form-section">
+                  <h2 class="section-title">Personal Details</h2>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="fullName" class="form-label">Full Name</label>
+                      <input type="text" id="fullName" class="form-input" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="email" id="email" class="form-input" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="phone" class="form-label">Phone</label>
+                      <input type="tel" id="phone" class="form-input" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" id="address" class="form-input" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h2 class="section-title">About Me and My Experience</h2>
+                  <div class="form-group">
+                    <textarea
+                      id="aboutMe"
+                      class="form-input"
+                      rows="4"
+                      placeholder="Write a brief introduction about yourself..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h2 class="section-title">Expertise</h2>
+                  <div class="form-group">
+                    <textarea
+                      id="expertise"
+                      class="form-input"
+                      rows="3"
+                      placeholder="List your key skills and expertise (comma-separated)..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h2 class="section-title">Hobbies</h2>
+                  <div class="form-group">
+                    <textarea
+                      id="hobbies"
+                      class="form-input"
+                      rows="2"
+                      placeholder="List your hobbies and interests (comma-separated)..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <div class="section-header">
+                    <h2 class="section-title">Education</h2>
+                    <button type="button" id="addEducation" class="btn btn-primary">
+                      Add Education
+                    </button>
+                  </div>
+                  <div id="educationList" class="entries-list">
+                    <!-- JS adds entries here -->
+                  </div>
+                </div>
+
+                <!-- Payment area -->
+                <div class="form-actions">
+                  <div class="pay-info">
+                    Pay a one-time fee of <strong>4.99&nbsp;€</strong> to download your resume as a PDF.
+                  </div>
+                  <button type="button" id="payButton" class="btn btn-success">
+                    Pay 4.99&nbsp;€ to Download PDF
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how-it-works" class="info-section">
+        <div class="container info-inner">
+          <h2>How it works</h2>
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>1. Fill in your details</h3>
+              <p>Personal info, About Me, your skills, hobbies and education history.</p>
+            </div>
+            <div class="info-card">
+              <h3>2. Pay securely</h3>
+              <p>Use Stripe to complete a one-time payment of 4.99&nbsp;€ – no accounts, no subscription.</p>
+            </div>
+            <div class="info-card">
+              <h3>3. Download your PDF</h3>
+              <p>After payment, click Download and instantly get your resume as a clean, ready-to-send PDF.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ / Support placeholders -->
+      <section id="faq" class="info-section">
+  <div class="container info-inner">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do I need to create an account?</h3>
+        <p class="faq-answer">
+          No. You simply fill out the form, pay a one-time fee, and download your resume immediately.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What payment methods are accepted?</h3>
+        <p class="faq-answer">
+          All major debit and credit cards are supported through Stripe, including Visa, Mastercard, and American Express.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Is the payment secure?</h3>
+        <p class="faq-answer">
+          Yes. All payments are securely processed by Stripe, the same provider used by millions of businesses.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+      <section id="support" class="info-section muted">
+        <div class="container info-inner">
+          <h2>Support</h2>
+          <p class="muted-text">
+            Please contact this email for additional support: altinmehmeti06@hotmail.com
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
