@@ -55,23 +55,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ---------- SUCCESS PAGE LOGIC ----------
   if (isSuccessPage) {
-    const stored = localStorage.getItem('resumeData');
-    if (!stored) {
-      alert('No resume data found. Please go back and fill out the form again.');
-      return;
+  let resumeData = {
+    fullName: '',
+    email: '',
+    phone: '',
+    address: '',
+    aboutMe: '',
+    expertise: '',
+    hobbies: '',
+    educationEntries: []
+  };
+
+  const stored = localStorage.getItem('resumeData');
+  if (stored) {
+    try {
+      resumeData = JSON.parse(stored);
+    } catch (e) {
+      console.warn('Failed to parse stored resumeData, using empty defaults.');
     }
-
-    const resumeData = JSON.parse(stored);
-
-    downloadPdfBtn.addEventListener('click', async function() {
-      try {
-        await generatePdfFromData(resumeData);
-      } catch (err) {
-        console.error('Error generating PDF:', err);
-        alert('There was an error generating the PDF. Please try again.');
-      }
-    });
+  } else {
+    console.warn('No resumeData found in localStorage, generating empty template.');
+    // Optional: show a small text on the page instead of alert
+    const card = document.querySelector('.success-card');
+    if (card) {
+      const msg = document.createElement('p');
+      msg.style.fontSize = '0.85rem';
+      msg.style.color = '#f97316';
+      msg.style.marginTop = '0.75rem';
+      msg.textContent = 'Note: Resume details could not be restored. The PDF may be empty if the form was not filled on this device/domain.';
+      card.appendChild(msg);
+    }
   }
+
+  downloadPdfBtn.addEventListener('click', async function() {
+    try {
+      await generatePdfFromData(resumeData);
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+      alert('There was an error generating the PDF. Please try again.');
+    }
+  });
+}
+
 
   // ---------- HELPERS ----------
   function addEducationEntry(values = null) {
